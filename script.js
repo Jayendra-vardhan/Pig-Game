@@ -12,7 +12,7 @@ const player0= document.querySelector('.player--0');
 const score1El= document.getElementById('score--1');
 const current1El= document.getElementById('current--1');
 const player1= document.querySelector('.player--1');
-let score=0;
+let currrentScore=0;
 let activePlayer=0;
 /*****************************************************/
 
@@ -21,7 +21,7 @@ let activePlayer=0;
 /*****************************************************/
 //active player
 function changeActivePlayer(){
-    score=0;
+    currrentScore=0;
     if(activePlayer===0){
         player0.classList.remove('player--active');
         player1.classList.add('player--active');
@@ -46,17 +46,17 @@ function newGame(){
     player1.classList.remove('player--active');
     player0.classList.add('player--active');
     activePlayer=0;
-    score=0;
+    currrentScore=0;
 };
 
 //Counting Scores
 function scoreCount(earnedScored) {
-    score+=earnedScored;
+    currrentScore+=earnedScored;
     if(activePlayer===0){
-        current0El.textContent=score;
+        current0El.textContent=currrentScore;
     }
     else{
-        current1El.textContent=score;
+        current1El.textContent=currrentScore;
     }
 };
 
@@ -77,17 +77,17 @@ function rollDice(){
     else{
         scoreCount(diceNum);
     }
-    //console.log(`score:${score}`,activePlayer+1);
+    //console.log(`score:${currrentScore}`,activePlayer+1);
 };
 
 //setting current score
 function setCurrentScore(){
     if(activePlayer===0){        
-        score0El.textContent=Number(score0El.textContent)+score;
+        score0El.textContent=Number(score0El.textContent)+currrentScore;
         changeActivePlayer();
     }
     else{
-        score1El.textContent=Number(score1El.textContent)+score;
+        score1El.textContent=Number(score1El.textContent)+currrentScore;
         changeActivePlayer();
     }
 }
