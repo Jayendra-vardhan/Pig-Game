@@ -12,7 +12,7 @@ const player0= document.querySelector('.player--0');
 const score1El= document.getElementById('score--1');
 const current1EL= document.getElementById('current--1');
 const player1= document.querySelector('.player--1');
-let score=0,current0=0,current1=0;
+let score=0;
 let activePlayer=0;
 /*****************************************************/
 
@@ -43,10 +43,9 @@ function newGame(){
     current1EL.textContent=0;
     diceEl.classList.add('hidden');
     player1.classList.remove('player--active');
-    player0.classList.add('player--active');activePlayer=0;
+    player0.classList.add('player--active');
+    activePlayer=0;
     score=0;
-    current0=0;
-    current1=0;
 };
 
 //Counting Scores
@@ -83,16 +82,14 @@ function rollDice(){
 
 //setting current score
 function setCurrentScore(){
-    if(activePlayer===0){
-        current0+=score;
-        current0EL.textContent=current0;
+    if(activePlayer===0){        
+        current0EL.textContent=Number(current0EL.textContent)+score;
         score=0;
         score0El.textContent=0;
         changeActivePlayer();
     }
     else{
-        current1+=score;
-        current1EL.textContent=current1;
+        current1EL.textContent=Number(current1EL.textContent)+score;
         score=0;
         score1El.textContent=0;
         changeActivePlayer();
@@ -113,5 +110,5 @@ btnRoll.addEventListener('click',rollDice);
 btnNew.addEventListener('click',newGame);
 
 //when hold button is clicked
-btnHold.addEventListener('click',setCurrentScore());
+btnHold.addEventListener('click',setCurrentScore);
 /***************************************************************/
