@@ -7,10 +7,10 @@ const btnRoll= document.querySelector('.btn--roll');
 const btnNew= document.querySelector('.btn--new');
 const btnHold= document.querySelector('.btn--hold');
 const score0El= document.querySelector('#score--0');
-const currentScore0= document.getElementById('current--0');
+const current0EL= document.getElementById('current--0');
 const player0= document.querySelector('.player--0');
 const score1El= document.getElementById('score--1');
-const currentScore1= document.getElementById('current--1');
+const current1EL= document.getElementById('current--1');
 const player1= document.querySelector('.player--1');
 let score=0,current0=0,current1=0;
 let activePlayer=0;
@@ -39,8 +39,8 @@ function changeActivePlayer(){
 function newGame(){
     score0El.textContent=0;
     score1El.textContent=0;
-    currentScore0.textContent=0;
-    currentScore1.textContent=0;
+    current0EL.textContent=0;
+    current1EL.textContent=0;
     diceEl.classList.add('hidden');
     player1.classList.remove('player--active');
     player0.classList.add('player--active');activePlayer=0;
@@ -85,17 +85,17 @@ function rollDice(){
 function setCurrentScore(){
     if(activePlayer===0){
         current0+=score;
-        currentScore0.textContent=current0;
+        current0EL.textContent=current0;
         score=0;
         score0El.textContent=0;
-        //checkwinner();
+        changeActivePlayer();
     }
     else{
         current1+=score;
-        currentScore1.textContent=current1;
+        current1EL.textContent=current1;
         score=0;
         score1El.textContent=0;
-        //checkwinner();
+        changeActivePlayer();
     }
 }
 /**********************************************************/
@@ -113,8 +113,5 @@ btnRoll.addEventListener('click',rollDice);
 btnNew.addEventListener('click',newGame);
 
 //when hold button is clicked
-btnHold.addEventListener('click',function(){
-    setCurrentScore();
-    changeActivePlayer();
-});
+btnHold.addEventListener('click',setCurrentScore());
 /***************************************************************/
