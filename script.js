@@ -1,7 +1,7 @@
 'use strict';
 
 //selecting elements
-/********************************************************/
+/*********************************************************/
 const diceEl= document.querySelector('.dice');
 const btnRoll= document.querySelector('.btn--roll');
 const btnNew= document.querySelector('.btn--new');
