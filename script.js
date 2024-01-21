@@ -31,11 +31,11 @@ function checkwinner(){
         winner();
     }
     else{
-        changeActivePlayer(); 
+        switchPlayer(); 
     }
 }
 //active player
-function changeActivePlayer(){
+function switchPlayer(){
     currrentScore=0;
     if(activePlayer===0){
         player0.classList.toggle('player--active');
@@ -59,7 +59,7 @@ function currentScoreCount(earnedScored) {
 
 //dice roll function
 function rollDice(){
-//  1.Generating a random dice roll
+    //  1.Generating a random dice roll
     const diceNum = Math.trunc(Math.random()*6)+1;
     console.log(diceNum);
 
@@ -69,7 +69,7 @@ function rollDice(){
     
 //  3. checking for 1(for player change)
     if(diceNum===1){
-        changeActivePlayer();
+        switchPlayer();
     }
     else{
         currentScoreCount(diceNum);
@@ -78,7 +78,7 @@ function rollDice(){
 };
 
 //setting current score
-function setScore(){     
+function setScore(){
     score[activePlayer]+=currrentScore;
     document.getElementById(`score--${activePlayer}`).textContent=score[activePlayer];
     checkwinner();
