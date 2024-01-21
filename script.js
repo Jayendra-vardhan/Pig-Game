@@ -12,11 +12,8 @@ const player0= document.querySelector('.player--0');
 const score1El= document.getElementById('score--1');
 const current1El= document.getElementById('current--1');
 const player1= document.querySelector('.player--1');
-let score=[0,0];
-let currrentScore=0;
-let activePlayer=0;
+let score, currrentScore, activePlayer;
 /*****************************************************/
-
 
 //Functions
 /*****************************************************/
@@ -86,24 +83,22 @@ function setScore(){
 
 //new game function
 function newGame(){
+    activePlayer=0;
+    currrentScore=0;
+    score=[0,0];
     current0El.textContent=0;
     current1El.textContent=0;
     score0El.textContent=0;
     score1El.textContent=0;
     player0.classList.add('player--active');
     player1.classList.remove('player--active');
-    activePlayer=0;
-    currrentScore=0;
     diceEl.classList.add('hidden');
     player0.classList.remove('player--winner');
     player1.classList.remove('player--winner');
-
     //when new game button is hit
     btnNew.addEventListener('click',newGame);
-
     //when the dice is rolled
     btnRoll.addEventListener('click',rollDice);
-
     //when hold button is clicked
     btnHold.addEventListener('click',setScore);
 }newGame();
