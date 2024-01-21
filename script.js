@@ -27,7 +27,7 @@ function winner(){
 }
 //checkwinner
 function checkwinner(){
-    if(Number(score0El.textContent)>=100||Number(score1El.textContent)>=100){
+    if(score[activePlayer]>=100){
         winner();
     }
     else{
