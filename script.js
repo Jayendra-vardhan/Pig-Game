@@ -17,20 +17,18 @@ let score, currrentScore, activePlayer;
 
 //Functions
 /*****************************************************/
-function winner(){
-    document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
-    btnRoll.removeEventListener('click',rollDice);
-    btnHold.removeEventListener('click',setScore);
-}
 //checkwinner
 function checkwinner(){
     if(score[activePlayer]>=100){
-        winner();
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+        btnRoll.removeEventListener('click',rollDice);
+        btnHold.removeEventListener('click',setScore);
     }
     else{
         switchPlayer(); 
     }
 }
+
 //active player
 function switchPlayer(){
     currrentScore=0;
